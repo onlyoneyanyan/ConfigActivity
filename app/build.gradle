@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "cn.nekocode.configactivity"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['assets']
+            res.srcDirs = [
+                    'src/main/res'
+            ]
+        }
+    }
+}
+
+def appcompatVersion = "22.2.0"
+def retrofitVersion = "2.0.0-beta1"
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    // Android support library
+    compile "com.android.support:appcompat-v7:$appcompatVersion"
+    compile "com.android.support:recyclerview-v7:$appcompatVersion"
+
+    // HTTP client
+    compile "com.squareup.retrofit:retrofit:$retrofitVersion"
+
+    // JSON library
+    compile "com.squareup.retrofit:converter-gson:$retrofitVersion"
+
+    // Storage library
+    compile 'com.github.orhanobut:hawk:1.20'
+
+    // Image downloader & transformer
+    compile "com.squareup.picasso:picasso:2.5.2"
+
+    // Reactive library
+    compile "com.squareup.retrofit:adapter-rxjava:$retrofitVersion"
+    compile "io.reactivex:rxkotlin:0.24.100"
+    compile "io.reactivex:rxandroid:1.0.1"
+
+    // Kotlin std library
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile "org.jetbrains.anko:anko-sdk15:0.7.2" // sdk19, sdk21, sdk23 are also available
+    compile "org.jetbrains.anko:anko-support-v4:0.7.2" // In case you need support.v4 bindings
+}
+
+buildscript {
+    ext.kotlin_version = '1.0.0-beta-2423'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
