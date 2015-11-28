@@ -20,5 +20,8 @@ tvGender.setSelected("male")
 ## 可现场编辑的 TextView
 - 监听软键盘的状态，控制 EditText 显示，覆盖在 TextView 上。
 
+## 应用示例
+[ConfigFragment.kt](https://github.com/nekocode/ConfigActivity/blob/master/app/src/main/java/cn/nekocode/configactivity/ui/fragment/ConfigFragment.kt#L49)
+
 ## 使用框架
 [**kotlin_android_base_framework**](https://github.com/nekocode/kotlin_android_base_framework)
